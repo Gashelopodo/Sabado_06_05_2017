@@ -3,6 +3,7 @@ package com.gashe.programarservicio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,4 +16,12 @@ public class MainActivity extends AppCompatActivity {
         startService(intent);
 
     }
+
+    public void pararAlarma(View view){
+
+        MyService.desprogramarAlarma(this);
+
+    }
+
+
 }

@@ -58,9 +58,21 @@ public class MyService extends Service {
 
     }
 
+    public static void desprogramarAlarma(Context context){
+        Intent intentAlarm = new Intent(context, MyReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 100, intentAlarm, PendingIntent.FLAG_NO_CREATE);
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+
+        Log.d(context.getClass().getCanonicalName(), "Paro la alarma");
+
+    }
+
     @Override
     public void onDestroy() {
         programarAlarma();
         super.onDestroy();
     }
+
 }
